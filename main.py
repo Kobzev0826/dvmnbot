@@ -15,6 +15,9 @@ def send_request(url, payload, dvmn_token):
     auth_headers = {'Authorization': "Token " + dvmn_token}
     response = requests.get(
         url, headers=auth_headers, timeout=91, params=payload)
+    breakpoint()
+    #get url with headers and params
+
     response.raise_for_status()
     return response.json()
 
@@ -48,7 +51,7 @@ if __name__ == "__main__":
             logger.info('Засыпаю на 1 минуту.')
             time.sleep(60)
             continue
-
+        breakpoint()
         if api_message['status'] == 'timeout':
             payload['timestamp'] = api_message['timestamp_to_request']
         elif api_message['status'] == 'found':
