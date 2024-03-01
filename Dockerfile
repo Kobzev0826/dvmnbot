@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-ENV APP_ROOT /app
+ARG APP_ROOT /app
 
 RUN \
   apt-get update && \
@@ -8,7 +8,6 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-#RUN pip3 install --upgrade pip
 
 COPY --chown=app requirements.txt ${APP_SOURCE}/requirements.txt
 
